@@ -1,8 +1,11 @@
 import React from 'react'
+import HomeHeader from '../Components/HomeHeader'
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <div>
+        <HomeHeader/>
+    </div>
   )
 }
 

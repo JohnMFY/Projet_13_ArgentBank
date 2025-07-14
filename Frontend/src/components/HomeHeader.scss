@@ -1,0 +1,20 @@
+.homeHeader{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    background-image: url("../assets/bank-tree.jpeg");
+    background-position: 0% 33%;
+    background-size: cover;
+    .infoHeader{
+        background-color: white;
+        margin: 4%;
+        padding: 1%;
+        width: 13%;
+        h3{
+            margin: 0%;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+    }
+}
