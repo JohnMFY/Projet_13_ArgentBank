@@ -1,8 +1,25 @@
-import React from 'react'
+import React from 'react';
+import UserAccountCard from './UserAccountCard';
 
 function UserAccounts() {
   return (
-    <div>UserAccounts</div>
+    <div className='userAccounts'>
+      <UserAccountCard
+        number="8349"
+        money="2,082.79"
+        balance="Available Balance"
+      />
+      <UserAccountCard
+        number="6712"
+        money="10,928.42"
+        balance="Available Balance"
+      />
+      <UserAccountCard
+        number="8349"
+        money="184.30"
+        balance="Current Balance"
+      />
+    </div>
   )
 }
 

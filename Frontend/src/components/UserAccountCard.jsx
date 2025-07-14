@@ -1,8 +1,16 @@
 import React from 'react'
+import "./UserAccountCard.scss"
 
-function UserAccountCard() {
+function UserAccountCard(props) {
   return (
-    <div>UserAccountCard</div>
+    <div className='userAccountCard'>
+      <div className='moneyDiv'>
+        <p>Argent Bank Checking (x{props.number})</p>
+        <h1>${props.money}</h1>
+        <p>{props.balance}</p>
+      </div>
+      <button className='btnTransaction'>View transactions</button>
+    </div>
   )
 }
 
