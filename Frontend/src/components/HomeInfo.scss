@@ -1,0 +1,21 @@
+.homeInfo{
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: lightgray solid 1px;
+    .homeInfoCard{
+        padding: 2%;
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        i{
+            border: 8px solid #00bc77;
+            border-radius: 50%;
+            padding: 4%;
+        }
+        p{
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+}

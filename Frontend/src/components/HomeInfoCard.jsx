@@ -1,8 +1,12 @@
 import React from 'react'
 
-function HomeInfoCard() {
+function HomeInfoCard(props) {
   return (
-    <div>HomeInfoCard</div>
+    <div className='homeInfoCard' >
+        <i class={props.iconClass}></i>
+        <h4>{props.title}</h4>
+        <p>{props.text}</p>
+    </div>
   )
 }
 
