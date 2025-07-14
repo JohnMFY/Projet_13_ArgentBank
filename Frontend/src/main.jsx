@@ -14,13 +14,14 @@ import ErrorPage from "./pages/ErrorPage.jsx"
 
 const root = document.getElementById("root");
 
+//mettre /:id pour le path /UserPage
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/SignIn" element={<SignInPage/>}/>
-        <Route path="/UserPage/:id" element={<UserPage/>}/>
+        <Route path="/UserPage" element={<UserPage/>}/>
         <Route path="*"  element={<ErrorPage/>}/>
       </Route>
     </Routes>
