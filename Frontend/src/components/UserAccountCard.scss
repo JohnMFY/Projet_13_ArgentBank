@@ -1,3 +1,27 @@
 .userAccountCard{
     background-color: white;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 2% 0%;
+    padding: 1%;
+    h1{
+        margin: 0%;
+    }
+    p{
+        margin: 0%;
+    }
+    .cardRight{
+        width: 10%;
+        align-content: center;
+        .btnTransaction{
+            color: white;
+            background-color: #00bc77;
+            width: 100%;
+            padding: 5%;
+            font-weight: 700;
+        }
+    }
+    
 }

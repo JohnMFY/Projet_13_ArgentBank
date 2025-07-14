@@ -1,6 +1,6 @@
 import React from 'react'
-import UserHeader from '../components/UserHeader'
-import UserAccounts from '../components/UserAccounts'
+import UserHeader from '../Components/UserHeader'
+import UserAccounts from '../Components/UserAccounts'
 import "./UserPage.scss"
 
 function UserPage() {

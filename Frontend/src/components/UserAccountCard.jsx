@@ -9,7 +9,9 @@ function UserAccountCard(props) {
         <h1>${props.money}</h1>
         <p>{props.balance}</p>
       </div>
-      <button className='btnTransaction'>View transactions</button>
+      <div className='cardRight'>
+        <button className='btnTransaction'>View transactions</button>
+      </div>
     </div>
   )
 }
