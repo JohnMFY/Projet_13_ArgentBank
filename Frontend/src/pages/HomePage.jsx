@@ -1,6 +1,6 @@
 import React from 'react'
-import HomeHeader from '../Components/HomeHeader'
-import HomeInfo from '../Components/HomeInfo'
+import HomeHeader from '../features/home/HomeHeader'
+import HomeInfo from '../features/home/HomeInfo'
 
 function HomePage() {
   return (

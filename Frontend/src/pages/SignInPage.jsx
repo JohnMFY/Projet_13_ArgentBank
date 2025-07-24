@@ -1,5 +1,5 @@
 import React from 'react'
-import SignInForm from '../Components/SignInForm'
+import SignInForm from '../features/auth/SignInForm'
 import './SignInPage.scss'
 
 function SignInPage() {
