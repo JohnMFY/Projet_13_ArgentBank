@@ -1,20 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './main.scss'
+//import { Provider } from 'react-redux';
+// add :
+// import { store } from './api/store.js';
+
+/** STYLE **/
+  import './main.scss'
 
 /** LAYOUT **/
-import Layout from "./Layout/Layout.jsx";
+  import Layout from "./Layout/Layout.jsx";
 
 /** PAGES **/
-import HomePage from "./Pages/homePage.jsx";
-import SignInPage from "./Pages/SignInPage";
-import UserPage from "./Pages/UserPage.jsx";
-import ErrorPage from "./pages/ErrorPage.jsx"
+  import HomePage from "./Pages/homePage.jsx";
+  import SignInPage from "./Pages/SignInPage";
+  import UserPage from "./Pages/UserPage.jsx";
+  import ErrorPage from "./pages/ErrorPage.jsx"
 
 const root = document.getElementById("root");
 
-//mettre /:id pour le path /UserPage
+//mettre /:id pour le path /UserPage + <Provider store={store}> </BrowserRouter> </Provider>
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
     <Routes>
