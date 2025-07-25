@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, /*useParams*/} from "react-router-dom"; //use of useParams for userPage/:id
 //import { Provider } from 'react-redux';
 // add :
 // import { store } from './api/store.js';
@@ -15,11 +15,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
   import HomePage from "./Pages/homePage.jsx";
   import SignInPage from "./Pages/SignInPage";
   import UserPage from "./Pages/UserPage.jsx";
-  import ErrorPage from "./pages/ErrorPage.jsx"
+  import ErrorPage from "./pages/ErrorPage.jsx";
 
 const root = document.getElementById("root");
-
-//mettre /:id pour le path /UserPage + <Provider store={store}> </BrowserRouter> </Provider>
+//const { id } = useParams();
+//mettre /:id pour le path /UserPage
+//mettre <Provider store={store}> </BrowserRouter> </Provider> pour alimenter en data du store
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
     <Routes>
