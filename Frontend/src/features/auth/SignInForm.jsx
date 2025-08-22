@@ -12,7 +12,6 @@ function SignInForm() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -42,7 +41,7 @@ function SignInForm() {
         </div>
 
         <div className='rememberMe'>
-          <input checked={remember} onChange={(e) => setRemember(e.target.checked)} type="checkbox" />
+          <input type="checkbox" />
           <label className='labelRemember'>Remember me</label>
         </div>
 
