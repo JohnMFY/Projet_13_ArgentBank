@@ -1,35 +1,49 @@
-import React from 'react'
-import { NavLink } from "react-router";
-import "./LayoutHeader.scss"
-
-/** 
- * Add a if condition to change div 'profilConnectionHeader'
- * to change the content if the user is connected
- *  <div className='profilConnectionHeader'>
- *      <p>$UserName</p>
- *      <NavLink to={"/"}>
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <div className='signIn'>Sign Out</div>
-        </NavLink>
- * </div>
-**/
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import "./LayoutHeader.scss";
+import { useSelector, useDispatch } from 'react-redux';
+import { User, logout } from '../features/auth/SignInFormSlice';
 
 function LayoutHeader() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const user = useSelector(User);
+
+  const handleSignOut = () => {
+    dispatch(logout());
+    navigate('/');
+  };
+
   return (
     <div className='layoutHeader'>
-        <NavLink to={"/"}>
-            <img className="logo" src=".\src\assets\argentBankLogo.png" alt="logo"/>  
-        </NavLink>
-        <div className='signInOut'>
-            <i class="fa-solid fa-circle-user fa-l"></i>
-            <div className='profilConnectionHeader'>
-                <NavLink to={"/SignIn"}>
-                    <div className='signIn'>Sign In</div>
-                </NavLink>
-            </div>
+      <NavLink to={"/"}>
+        <img className="logo" src=".\src\assets\argentBankLogo.png" alt="logo" />  
+      </NavLink>
+
+      <div className='signInOut'>
+        <i className="fa-solid fa-circle-user fa-l"></i>
+        {user ? (
+          <div className='profilConnectionHeader'>
+            <NavLink to={"UserPage"}>
+              <p>{user.body.firstName+' '+user.body.lastName}</p>
+            </NavLink>
+            <span>
+              <button onClick={handleSignOut} className="signOutBtn">
+                <div className='signIn'>Sign Out</div>
+              </button>
+            </span>
+          </div>
+        ) : (
+          <div className='profilConnectionHeader'>
+            <NavLink to={"/SignIn"}>
+              <div className='signIn'>Sign In</div>
+            </NavLink>
+          </div>
+        )}
       </div>
     </div>
-  )
+  );
 }
 
-export default LayoutHeader
+export default LayoutHeader;
