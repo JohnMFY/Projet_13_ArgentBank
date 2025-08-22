@@ -45,9 +45,7 @@ function SignInForm() {
           <label className='labelRemember'>Remember me</label>
         </div>
 
-        <button className='btn' type='submit'>
-          Sign In
-        </button>
+        <button className='btn' type='submit'> Sign In </button>
       </form>
     </div>
   );

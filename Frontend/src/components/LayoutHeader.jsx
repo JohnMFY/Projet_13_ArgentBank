@@ -26,7 +26,7 @@ function LayoutHeader() {
         {user ? (
           <div className='profilConnectionHeader'>
             <NavLink to={"UserPage"}>
-              <p>{user.body.firstName+' '+user.body.lastName}</p>
+              <p>{user.body.firstName}</p>
             </NavLink>
             <span>
               <button onClick={handleSignOut} className="signOutBtn">
