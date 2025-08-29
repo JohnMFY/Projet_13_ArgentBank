@@ -52,3 +52,8 @@ function SignInForm() {
 }
 
 export default SignInForm;
+
+/*
+proteger page user
+faire une condition si pas de token redirigé vers login
+*/
