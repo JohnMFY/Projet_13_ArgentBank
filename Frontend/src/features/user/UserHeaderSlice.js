@@ -39,9 +39,6 @@ const userSlice = createSlice({
         state.profile = action.payload;
         state.error = null;
       })
-      .addCase(updateUserProfile.rejected, (state, action) => {
-        state.error = action.payload?.message || action.error.message;
-      });
   }
 });
 
