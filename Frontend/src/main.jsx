@@ -13,7 +13,7 @@ import { Provider } from 'react-redux'
 /** PAGES **/
   import HomePage from "./Pages/homePage.jsx";
   import SignInPage from "./Pages/SignInPage";
-  import UserPage from "./Pages/UserPage.jsx";
+  import UserPage from "./pages/UserPage.jsx";
   import ErrorPage from "./pages/ErrorPage.jsx";
 
 createRoot(document.getElementById('root')).render(
