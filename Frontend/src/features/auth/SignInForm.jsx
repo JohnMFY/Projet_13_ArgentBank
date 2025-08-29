@@ -19,7 +19,7 @@ function SignInForm() {
     }
   }, [user, navigate]);
 
-  const handleSubmit = (e) => {
+  const submit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password }));
   };
@@ -29,7 +29,7 @@ function SignInForm() {
       <i className="fa-solid fa-circle-user fa-l"></i>
       <h4>Sign In</h4>
 
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form' onSubmit={submit}>
         <div className='username'>
           <label>Email</label>
           <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
