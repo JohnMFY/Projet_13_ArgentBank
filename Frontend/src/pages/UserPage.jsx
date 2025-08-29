@@ -11,7 +11,7 @@ function UserPage() {
 
   useEffect(() => {
     if (!user) {
-      navigate('/SignIn', { replace: true })
+      navigate('/SignIn')
     }
   }, [user, navigate])
 
