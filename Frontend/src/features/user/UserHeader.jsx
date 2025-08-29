@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import "./UserHeader.scss";
 import { useSelector } from 'react-redux';
 import { User } from '../auth/SignInFormSlice';
@@ -6,32 +6,41 @@ import { User } from '../auth/SignInFormSlice';
 function UserHeader() {
   
   const user = useSelector(User);
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className='userHeader'>
+      
       <h2>Welcome back</h2>
-      <div className='userName&btnEdit'>
-        {user && (
-          <h2 className='userName'>
-            {user.body.firstName + ' ' + user.body.lastName + ' !'}
-          </h2>
-        )}
-        <button className='btnEdit'>Edit Name</button>
-      </div>
-      <div className='editNameDiv'>
-        <div className='editInputs'>
+
+      {!isEditing && (
+        <div className='userName&btnEdit'>
           {user && (
-            <input type="text" className='firstName' placeholder={user.body.firstName}/>
+            <h2 className='userName'>
+              {user.body.firstName + ' ' + user.body.lastName + ' !'}
+            </h2>
           )}
-          {user && (
-            <input type="text" className='lastName' placeholder={user.body.lastName}/>
-          )}
+          <button className='btnEdit'onClick={() => setIsEditing(true)}>Edit Name</button>
         </div>
-        <div className='editBtn'>
-          <button className='btn' type='submit'> Save </button>
-          <button className='btn' type='submit'> Cancel </button>
+      )}
+
+      {isEditing && (
+        <div className='editNameDiv'>
+          <div className='editInputs'>
+            {user && (
+              <input type="text" className='firstName' placeholder={user.body.firstName}/>
+            )}
+            {user && (
+              <input type="text" className='lastName' placeholder={user.body.lastName}/>
+            )}
+          </div>
+          <div className='editBtn'>
+            <button className='btn' type='submit'> Save </button>
+            <button className='btn' type='submit' onClick={() => setIsEditing(false)}> Cancel </button>
+          </div>
         </div>
-      </div>
+      )}
+
     </div>
   );
 }
