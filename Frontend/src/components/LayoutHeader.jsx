@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import "./LayoutHeader.scss";
 import { useSelector, useDispatch } from 'react-redux';
-import { User, logout } from '../features/auth/SignInFormSlice';
+import { User, logout } from '../api/userSlice';
 
 function LayoutHeader() {
   const dispatch = useDispatch();
@@ -26,12 +26,11 @@ function LayoutHeader() {
         {user ? (
           <div className='profilConnectionHeader'>
             <NavLink to={"UserPage"}>
-              <p>{user.body.firstName}</p>
+              <p>{user?.body?.firstName}</p>
             </NavLink>
-            <span>
-              <button onClick={handleSignOut} className="signOutBtn">
-                <div className='signIn'>Sign Out</div>
-              </button>
+            <span onClick={handleSignOut}>
+              <i className="fa-solid fa-arrow-right-from-bracket"></i>
+              <div className="signOut">Sign Out</div>
             </span>
           </div>
         ) : (

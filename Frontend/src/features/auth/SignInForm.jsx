@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./SignInForm.scss";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, User } from './SignInFormSlice';
+import { login, User } from '../../api/userSlice';
 
 function SignInForm() {
   const dispatch = useDispatch();
