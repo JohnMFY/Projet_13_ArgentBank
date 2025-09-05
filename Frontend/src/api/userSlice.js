@@ -22,7 +22,7 @@ export const login = createAsyncThunk(
 
       /**** ENVOIE LE TOKEN POUR AVOIR LES DATAS DU PROFIL ****/
       const getUserProfile = await fetch('http://localhost:3001/api/v1/user/profile', {
-        method: 'POST', // Keep POST if your backend requires it
+        method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -42,16 +42,12 @@ export const login = createAsyncThunk(
     }
   }
 );
-
+/**** UPDATE LE PRENOM ET NOM DU PROFIL ****/
 export const updateUserProfile = createAsyncThunk(
   'user/updateUserProfile',
   async ({ firstName, lastName }, { getState, rejectWithValue }) => {
     try {
       const token = getState().auth.token;
-
-      if (!token) {
-        return rejectWithValue({ message: 'No token found' });
-      }
 
       const response = await fetch('http://localhost:3001/api/v1/user/profile', {
         method: 'PUT',

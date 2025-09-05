@@ -12,6 +12,7 @@ function SignInForm() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false); 
 
   useEffect(() => {
     if (user) {
@@ -19,9 +20,14 @@ function SignInForm() {
     }
   }, [user, navigate]);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    dispatch(login({ email, password }));
+    const submitResult = await dispatch(login({ email, password }));
+    if (login.fulfilled.match(submitResult)) {
+      setError(false);
+    } else {
+      setError(true);
+    }
   };
 
   return (
@@ -32,12 +38,12 @@ function SignInForm() {
       <form className='form' onSubmit={submit}>
         <div className='username'>
           <label>Email</label>
-          <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
+          <input className={error ? 'error' : ''} value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
         </div>
 
         <div className='password'>
           <label>Password</label>
-          <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
+          <input className={error ? 'error' : ''} value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
         </div>
 
         <div className='rememberMe'>
