@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, /*useParams*/} from "react-router-dom"; //use of useParams for userPage/:id
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import store from './api/store.js'
 import { Provider } from 'react-redux'
 
