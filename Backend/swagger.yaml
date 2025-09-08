@@ -22,9 +22,9 @@ paths:
       tags:
         - User
       summary: Sign in (to get token)
-      description: >
-        Authenticate a user by email and password.  
-        Returns a JWT token if login is successful.
+      description: |-
+        Authenticate a user with email and password.  
+        Returns a token if login is successful.
       requestBody:
         required: true
         content:
@@ -54,14 +54,17 @@ paths:
                       token:
                         type: string
                         example: token
+        '404':
+          description: User not found
   /user/profile:
     post:
       tags:
         - User
       summary: Get user profile (with token)
-      description: >
-        Retrieve the authenticated user's profile.  
-        Requires a valid JWT token in the `Authorization` header.
+      description: |-
+        Requires token in Auth Type, Bearer Token.
+        
+        Get user profile data.
       security:
         - bearerAuth: []
       responses:
@@ -100,12 +103,18 @@ paths:
                         example: 2025-09-04T15:06:41.975Z
                       id:
                         type: string
-                        example: 68822e08ce3e08259cf4f30b
+                        example: id
+        '404':
+          description: User data not found
 
     put:
       tags:
         - User
       summary: Change userName (with Token)
+      description: |-
+        Requires token in Auth Type, Bearer Token and a body with first name and last name.
+        
+        Change user first name and  last name.
       requestBody:
         content:
           application/json:
@@ -121,15 +130,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '404':
+          description: Not able to update first name and last name
 
   /transactions:
     get:
       tags:
         - Transaction
-      summary: Get all transactions for the current month
-      description: >
-        Retrieve all transactions for the authenticated user, grouped by account.
-        Requires a valid JWT token in the `Authorization` header.
+      summary: Get all transactions (current month)
+      description: |-
+        Get the transactions for the user connected, grouped by account.
+        
+        Requires token in Auth Type, Bearer Token and the current date
       security:
         - bearerAuth: []
       parameters:
@@ -137,68 +149,69 @@ paths:
           name: month
           schema:
             type: string
-            example: "2025-09"
-          description: Month (YYYY-MM) to filter transactions (optional, defaults to current month).
+            example: current
+          description: month=current
       responses:
         '200':
-          description: Successfully retrieved transactions
+          description: get transactions of the month OK
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  message:
-                    type: string
-                    example: Successfully retrieved transactions
-                  body:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        accountId:
-                          type: string
-                          example: x8349
-                        transactions:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                type: string
-                                example: tr_12345
-                              date:
-                                type: string
-                                format: date-time
-                                example: 2025-09-01T10:00:00Z
-                              description:
-                                type: string
-                                example: Golden Sun Bakery
-                              amount:
-                                type: number
-                                example: 20.0
-                              balance:
-                                type: number
-                                example: 2087.79
-                              type:
-                                type: string
-                                example: Electronic
-                              category:
-                                type: string
-                                example: Food
-                              notes:
-                                type: string
-                                example: Birthday cake
-
+                type: array
+                items:
+                  type: object
+                  properties:
+                    accountId:
+                      type: string
+                      example: x8349
+                    transactions:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                            format: date-time
+                            example: 2025-09-04T15:06:41.975Z
+                          description:
+                            type: string
+                            example: Golden Sun Bakery
+                          amount:
+                            type: number
+                            example: 5
+                          balance:
+                            type: number
+                            example: 2000
+              example:
+                - accountId: x8349
+                  transactions:
+                    - transactionId: id
+                      date: 2025-09-04T15:06:41.975Z
+                      description: Golden Sun Bakery
+                      amount: 5
+                      balance: 2000
+                    - transactionId: id
+                      date: 2025-09-04T15:06:41.975Z
+                      description: Golden Sun Bakery
+                      amount: 10
+                      balance: 3000
+                    - transactionId: id
+                      date: 2025-09-04T15:06:41.975Z
+                      description: Golden Sun Bakery
+                      balance: 4000
+                      amount: 15
+        '404':
+          description: Not able to fetch transactions
+          
   /transactions/{transactionId}:
     get:
       tags:
         - Transaction
-      summary: Get transaction details
-      description: >
-        Retrieve the details of a specific transaction.
+      summary: Get transaction data
+      description: |-
+        Get data of a transaction.
+        
+        Requires the  transaction ID
       security:
         - bearerAuth: []
       parameters:
@@ -207,10 +220,10 @@ paths:
           required: true
           schema:
             type: string
-          description: ID of the transaction to retrieve
+          description: Transaction ID required
       responses:
         '200':
-          description: Successfully retrieved transaction details
+          description: get transaction data OK
           content:
             application/json:
               schema:
@@ -221,13 +234,13 @@ paths:
                     example: 200
                   message:
                     type: string
-                    example: Transaction details retrieved
+                    example: get transaction data OK
                   body:
                     type: object
                     properties:
-                      id:
+                      transactionId:
                         type: string
-                        example: tr_12345
+                        example: id
                       date:
                         type: string
                         format: date-time
@@ -240,7 +253,7 @@ paths:
                         example: 20.0
                       balance:
                         type: number
-                        example: 2087.79
+                        example: 2000
                       type:
                         type: string
                         example: Electronic
@@ -249,7 +262,7 @@ paths:
                         example: Food
                       notes:
                         type: string
-                        example: Birthday cake
+                        example: Croissants
         '404':
           description: Transaction not found
 
@@ -258,7 +271,7 @@ paths:
         - Transaction
       summary: Update a transaction
       description: >
-        Update information about a transaction (category, notes, etc.).
+        Update transaction data (Category && || Notes).
       security:
         - bearerAuth: []
       parameters:
@@ -267,7 +280,7 @@ paths:
           required: true
           schema:
             type: string
-          description: ID of the transaction to update
+          description: Transaction ID required
       requestBody:
         required: true
         content:
@@ -280,7 +293,7 @@ paths:
                   example: Food
                 notes:
                   type: string
-                  example: Paid for client meeting
+                  example: Breakfeast meeting
       responses:
         '200':
           description: Transaction successfully updated
@@ -296,36 +309,4 @@ paths:
                     type: string
                     example: Transaction updated successfully
         '404':
-          description: Transaction not found
-
-    delete:
-      tags:
-        - Transaction
-      summary: Delete a transaction
-      description: >
-        Delete a transaction from the account.
-      security:
-        - bearerAuth: []
-      parameters:
-        - in: path
-          name: transactionId
-          required: true
-          schema:
-            type: string
-          description: ID of the transaction to delete
-      responses:
-        '200':
-          description: Transaction successfully deleted
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  message:
-                    type: string
-                    example: Transaction deleted successfully
-        '404':
-          description: Transaction not found
+          description: Update of transaction failed
