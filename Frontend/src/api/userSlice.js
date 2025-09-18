@@ -14,8 +14,10 @@ export const login = createAsyncThunk(
       });
 
       if (!getToken.ok) {
-        return rejectWithValue({ message: 'Login failed' });
+        const errorData = await getToken.json();
+        return rejectWithValue({ message: errorData.message || 'Login failed' });
       }
+
 
       const loginData = await getToken.json();
       const token = loginData.body?.token;
@@ -74,6 +76,8 @@ const initialState = {
   token: null,
   user: null,
   error: null,
+  emailError: null,
+  passwordError: null,
 };
 
 const authSlice = createSlice({
@@ -95,9 +99,21 @@ const authSlice = createSlice({
             state.token = action.payload.token;
             state.user = action.payload.user;
             state.error = null;
+            state.emailError = null;
+            state.passwordError = null;
         })
         .addCase(login.rejected, (state, action) => {
-            state.error = action.payload?.message || action.error.message;
+          const message = action.payload?.message || action.error.message;
+          if (message.toLowerCase().includes('user')) {
+            state.emailError = "User not found";
+            state.passwordError = null;
+          } else if (message.toLowerCase().includes('password')) {
+            state.passwordError = "Password incorrect";
+            state.emailError = null;
+          } else {
+            state.emailError = null;
+            state.passwordError = null;
+          }
         })
         .addCase(updateUserProfile.fulfilled, (state, action) => {
             state.user = { body: action.payload };
