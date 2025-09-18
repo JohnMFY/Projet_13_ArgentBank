@@ -11,7 +11,7 @@ function UserPage() {
 
   useEffect(() => {
     if (!user) {
-      navigate('/SignIn')
+      navigate('/')
     }
   }, [user, navigate])
 

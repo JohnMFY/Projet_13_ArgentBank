@@ -266,7 +266,7 @@ paths:
         '404':
           description: Transaction not found
 
-    put:
+    patch:
       tags:
         - Transaction
       summary: Update a transaction
