@@ -45,3 +45,17 @@
         }
     }   
 }
+@media (max-width: 992px) {
+    .layoutHeader{
+        .signInOut{
+            width: 25%;
+        }   
+    }
+}
+@media (max-width: 768px) {
+    .layoutHeader{
+        .signInOut{
+            width: 50%;
+        }   
+    }
+}

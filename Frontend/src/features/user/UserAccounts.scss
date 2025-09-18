@@ -1,3 +1,9 @@
 .userAccounts{
     width: 85%;
 }
+
+@media (max-width: 768px) {
+    .userAccounts{
+        width: 96%;
+    }
+}

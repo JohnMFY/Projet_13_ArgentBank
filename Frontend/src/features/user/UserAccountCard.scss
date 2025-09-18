@@ -25,3 +25,32 @@
     }
     
 }
+@media (max-width: 992px) {
+    .userAccountCard{
+        margin: 5% 0%;
+        .cardRight{
+            width: 30%;
+            align-content: center;
+            .btnTransaction{
+                padding: 3%;
+            }
+        }
+    
+    }
+}
+@media (max-width: 768px) {
+    .userAccountCard{
+        margin: 5% 0%;
+        h1{
+            margin: 0.5% 0%;
+        }
+        .cardRight{
+            width: 30%;
+            align-content: center;
+            .btnTransaction{
+                padding: 3%;
+            }
+        }
+    
+    }
+}

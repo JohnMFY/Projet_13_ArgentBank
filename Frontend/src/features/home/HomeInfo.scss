@@ -19,3 +19,34 @@
         }
     }
 }
+
+@media (max-width: 992px) {
+    .homeInfo{
+        .homeInfoCard{
+            h4{
+                margin-bottom: 1%;
+            }
+            i{
+                border: 6px solid #00bc77;
+                border-radius: 50%;
+                padding: 6%;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .homeInfo{
+        .homeInfoCard{
+            i{
+                border: 5px solid #00bc77;
+                border-radius: 50%;
+                padding: 10%;
+            }
+            p{
+                font-size: 12px;
+                text-align: left;
+            }
+        }
+    }
+}

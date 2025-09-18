@@ -17,6 +17,9 @@
         .editInputs{
             display: flex;
             justify-content: space-evenly;
+            input{
+                margin: 0% 2%;
+            }
         }
         .editBtn{
             display: flex;
@@ -29,6 +32,29 @@
                 color: rgb(137, 103, 192);
                 font-weight: 600;
             }
+        }
+    }
+}
+@media (max-width: 992px) {
+    .userHeader{
+        margin: 2% 0%;
+        .btnEdit{
+            margin-top: 5%;
+        }
+    }
+}
+@media (max-width: 768px) {
+    .userHeader{
+        margin: 5% 0%;
+        .editNameDiv{
+            .editInputs{
+                width: 100%;
+                input{
+                    margin: 0% 2%;
+                    width: 90%;
+                }
+            }
+           
         }
     }
 }

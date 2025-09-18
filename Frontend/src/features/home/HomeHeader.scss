@@ -18,3 +18,19 @@
         }
     }
 }
+@media (max-width: 992px) {
+  .homeHeader .infoHeader {
+    width: 30%;
+  }
+}
+@media (max-width: 768px) {
+  .homeHeader .infoHeader {
+    width: 40%;
+    h3{
+        font-size: medium;
+    }
+    p{
+        font-size: 15px;
+    }
+  }
+}
