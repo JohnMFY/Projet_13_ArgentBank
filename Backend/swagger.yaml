@@ -200,7 +200,7 @@ paths:
                       description: Golden Sun Bakery
                       balance: 4000
                       amount: 15
-        '404':
+        '500':
           description: Not able to fetch transactions
           
   /transactions/{transactionId}:
